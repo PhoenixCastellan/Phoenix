@@ -22,7 +22,7 @@ namespace DataStructure.Collections.Generic
             _size = 0;
         }
 
-        public void AddFirst(T item)
+        public LinkedListNode<T> AddFirst(T item)
         {
             if (_size == 0)
             {
@@ -44,9 +44,10 @@ namespace DataStructure.Collections.Generic
                 _head = node;
                 _size += 1;
             }
+            return _head;
         }
 
-        public void AddLast(T item)
+        public LinkedListNode<T> AddLast(T item)
         {
             var newNode = new LinkedListNode<T>(item);
             if (_size == 0)
@@ -67,6 +68,7 @@ namespace DataStructure.Collections.Generic
                 _tail = newNode;
                 _size += 1;
             }
+            return _tail;
         }
 
         public LinkedListNode<T> InsertBefore(LinkedListNode<T> positionNode, T item)
@@ -149,10 +151,11 @@ namespace DataStructure.Collections.Generic
                 while (_head != null)
                 {
                     var node = _head.NextNode;
-                    _head = null;
+                    _head.Dispose();
                     _head = node;
                 }
             }
+            _tail = null;
             _size = 0;
         }
 
@@ -167,8 +170,8 @@ namespace DataStructure.Collections.Generic
                 throw new ArgumentNullException(nameof(nextNode));
             }
 
-            nextNode.NextNode = node;
-            node.PreNode = nextNode;
+            node.NextNode = nextNode;
+            nextNode.PreNode = node;
         }
     }
 }
