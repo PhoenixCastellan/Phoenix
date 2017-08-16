@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SqlHelper
 {
-    public class Class1
+    public class SqlConnectionExtension
     {
+        
     }
 }

@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlHelper", "SqlHelper\SqlHelper.csproj", "{108BBF38-7BA2-484A-914E-5B42233D917E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructureAndAlgorithm", "DataStructureAndAlgorithm", "{2B531A7A-C5FC-47D9-B51C-93314911E84C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructureTests", "DataStructureTests\DataStructureTests.csproj", "{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{164D3E2D-B41C-4266-ADFB-B6F453752A2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +23,20 @@ Global
 		{108BBF38-7BA2-484A-914E-5B42233D917E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108BBF38-7BA2-484A-914E-5B42233D917E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108BBF38-7BA2-484A-914E-5B42233D917E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DDD3AE91-7BA7-4B6C-B885-D40D7F9E61B8} = {2B531A7A-C5FC-47D9-B51C-93314911E84C}
+		{B4F74262-C5FE-4F04-978D-C3B7D1A3AEB0} = {164D3E2D-B41C-4266-ADFB-B6F453752A2B}
 	EndGlobalSection
 EndGlobal
