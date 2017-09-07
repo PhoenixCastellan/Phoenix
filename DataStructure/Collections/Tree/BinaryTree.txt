@@ -1,0 +1,321 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+
+   class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            Node<string> H = new Node<string>("H",null,null);
+            Node<string> I = new Node<string>("I",null,null);
+            Node<string> J = new Node<string>("J",null,null);
+            Node<string> D = new Node<string>("D",H,I);
+            Node<string> E = new Node<string>("E", J,null);
+            Node<string> B = new Node<string>("B", D, E);
+            Node<string> F = new Node<string>("F", null, null);
+            Node<string> G = new Node<string>("G", null, null);
+            Node<string> C = new Node<string>("C", F, G);
+            Node<string> A = new Node<string>("A", B, C);
+            Console.WriteLine("先序遍历结果集:");
+            Node<string>.PreOrder(A);
+            Console.WriteLine("中序遍历结果集:");
+            Node<string>.InOrder(A);
+            Console.WriteLine("后序遍历结果集:");
+            Node<string>.PostnOrder(A);
+            Console.WriteLine("层序遍历结果集:");
+            Node<string>.LevelOrder(A);
+
+        }
+    }
+
+//建立二叉树的泛型类
+public class Node<T> 
+    { 
+      private T data;             //数据域 
+      private Node<T> lChild;     //左孩子 
+      private Node<T> rChild;     //右孩子 
+      //构造器 
+      public Node(T val, Node<T> lp, Node<T> rp) 
+      { 
+      data = val; 
+      lChild = lp;
+      rChild = rp; 
+      } 
+      //构造器 
+      public Node(Node<T> lp, Node<T> rp) 
+      { 
+    data = default(T); 
+       lChild = lp; 
+       rChild = rp; 
+     } //构造器 
+public Node(T val) 
+    { 
+    data = val; 
+    lChild = null; 
+    rChild = null; 
+     } 
+ 
+//构造器 
+public Node() 
+    { 
+    data = default(T); 
+    lChild = null; 
+    rChild = null; 
+    } 
+ //数据属性 
+public T Data 
+    { 
+    get 
+    { 
+        return data; 
+    } 
+    set 
+    { 
+        value = data; 
+    } 
+    } 
+ 
+//左孩子属性 
+public Node<T> LChild 
+    { 
+    get 
+        { 
+            return lChild; 
+         } 
+    set 
+        {     lChild = value; 
+        } 
+    } 
+ 
+//右孩子属性 
+    public Node<T> RChild 
+    { 
+    get 
+        { 
+            return rChild; 
+        } 
+    set 
+    { 
+        rChild = value; 
+    } 
+    }
+    public static void PreOrder(Node<T> root)
+    {
+        //根结点为空 
+        if (root == null)
+        {
+            return;
+        }
+        //处理根结点 
+        Console.WriteLine("{0}", root.Data);
+        //先序遍历左子树 
+        PreOrder(root.lChild);
+        //先序遍历右子树 
+        PreOrder(root.rChild);
+    }
+
+
+    public static void InOrder(Node<T> root)
+    { 
+    //根结点为空
+        if (root==null)
+        {
+            return;
+        }
+        //中序遍历左子树
+        InOrder(root.LChild);
+        Console.WriteLine("{0}", root.data);
+        //中序遍历右子树
+        InOrder(root.rChild);
+    }
+    public static void PostnOrder(Node<T> root)
+    {
+        //根结点为空
+        if (root == null)
+        {
+            return;
+        }
+        //后序遍历左子树
+        PostnOrder(root.LChild);
+       
+        //后序遍历右子树
+        PostnOrder(root.rChild);
+        Console.WriteLine("{0}", root.data);
+    }
+
+    public static void LevelOrder(Node<T> root) 
+    { 
+        //根结点为空 
+        if (root == null) 
+        { 
+            return; 
+        } 
+     
+        //设置一个队列保存层序遍历的结点 
+        CSeqQueue<Node<T>> sq = new CSeqQueue<Node<T>>(50); 
+         
+        //根结点入队 
+        sq.In(root); 
+        //队列非空，结点没有处理完 
+        while (!sq.IsEmpty()) 
+        { 
+            //结点出队 
+            Node<T> tmp = sq.Out(); 
+            //处理当前结点 
+            Console.WriteLine("{0}", tmp.data); 
+    //将当前结点的左孩子结点入队 
+     if (tmp.LChild != null) 
+     { 
+         sq.In(tmp.LChild); 
+     }
+     //将当前结点的右孩子结点入队
+     if (tmp.RChild != null)
+     {
+         sq.In(tmp.RChild);
+     }
+ }
+} 
+} 
+
+
+//队列接口
+public interface IQueue<T>
+{ 
+        int GetLength();          //求队列的长度 
+        bool IsEmpty();           //判断对列是否为空 
+        void Clear();             //清空队列 
+        void In(T item);          //入队 
+        T Out();                  //出队 
+        T GetFront();             //取对头元素 
+    } 
+
+//队列实例
+public class CSeqQueue<T> : IQueue<T> { 
+      private int maxsize;       //循环顺序队列的容量 
+      private T[] data;          //数组， 用于存储循环顺序队列中的数据元素 
+      private int front;          //指示循环顺序队列的队头 
+      private int rear;           //指示循环顺序队列的队尾 
+      //索引器 
+      public T this[int index] 
+      { 
+          get  
+          { 
+              return data[index]; 
+         } 
+          set  
+          { 
+              data[index] = value; 
+          } 
+      } 
+      //容量属性 
+      public int Maxsize 
+      { 
+          get 
+          { 
+             return maxsize; 
+            } 
+            set 
+            { 
+                maxsize = value; 
+            } 
+} 
+ //队头属性 
+public int Front 
+     { 
+         get 
+         { 
+            return front; 
+            } 
+        set 
+        { 
+            front = value; 
+        } 
+} 
+ 
+//队尾属性 
+public int Rear 
+     { 
+         get 
+         { 
+            return rear; 
+            } 
+        set 
+        { 
+                rear = value; 
+        } 
+       } 
+     //构造器 
+     public CSeqQueue(int size) 
+     {  
+         data = new T[size]; 
+         maxsize = size; 
+         front = rear = -1; 
+     } 
+     //求循环顺序队列的长度 
+     public int GetLength() 
+     { 
+                 return (rear-front+maxsize) % maxsize; 
+} 
+    //清空循环顺序队列 
+    public void Clear() 
+    { 
+        front = rear = -1; 
+    } 
+    //判断循环顺序队列是否为空 
+    public bool IsEmpty() 
+    { 
+        if (front == rear) 
+        { 
+            return true; 
+        } 
+        else  
+        { 
+            return false; 
+        } 
+    } 
+    //判断循环顺序队列是否为满 
+    public bool IsFull() 
+              { 
+          if ((rear + 1) % maxsize==front) 
+          { 
+              return true; 
+          } 
+          else 
+          { 
+                           return false; 
+        } 
+} 
+     //入队 
+     public void In(T item) 
+     { 
+         if(IsFull()) 
+         { 
+             Console.WriteLine("Queue is full"); 
+             return; 
+        } 
+        data[++rear] = item; 
+} 
+     //出队 
+     public T Out() 
+     { 
+         T tmp = default(T); 
+         if (IsEmpty())
+         {
+             Console.WriteLine("Queue is empty");
+             return tmp;
+         }
+         tmp = data[++front];
+         return tmp;
+     }
+     //获取队头数据元素 
+     public T GetFront()
+     {
+         if (IsEmpty())
+         {
+             Console.WriteLine("Queue is empty!");
+             return default(T);
+         }
+         return data[front + 1];
+     }
+ }

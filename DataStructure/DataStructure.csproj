@@ -43,8 +43,19 @@
     <Compile Include="Collections\Generic\LinkedList.cs" />
     <Compile Include="Collections\Generic\LinkedListNode.cs" />
     <Compile Include="Collections\Generic\Queue.cs" />
+    <Compile Include="Collections\Tree\BinaryTree.cs" />
+    <Compile Include="Collections\Tree\BinaryTreeNode.cs" />
+    <Compile Include="Collections\Tree\BTree.cs" />
+    <Compile Include="Collections\Tree\IBinaryTree.cs" />
+    <Compile Include="Collections\Tree\RBTree\EColor.cs" />
+    <Compile Include="Collections\Tree\RBTree\RedBlackTreeNode.cs" />
+    <Compile Include="Collections\Tree\RBTree\RedBlackTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Collections\Tree\BinaryTree.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
